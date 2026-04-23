@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Layout, LogOut, Sun, Moon, User } from 'lucide-react';
+import { BookOpen, LogOut, Sun, Moon, User } from 'lucide-react';
 
 const Navbar = () => {
   const { user, logout, darkMode, toggleDarkMode } = useAuth();
@@ -28,19 +28,21 @@ const Navbar = () => {
         <Link
           to="/dashboard"
           className="flex align-center gap-1"
-          style={{ textDecoration: 'none', color: 'var(--primary)', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '-0.02em' }}
+          style={{ textDecoration: 'none', color: 'var(--primary)', fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: '1.4rem', letterSpacing: '0.02em', fontStyle: 'italic' }}
         >
           <div style={{
-            background: 'linear-gradient(135deg, var(--primary), #818cf8)',
-            color: 'white',
+            background: 'var(--bg-main)',
+            border: '1px solid var(--border)',
+            color: 'var(--primary)',
             padding: '0.4rem',
-            borderRadius: '9px',
+            borderRadius: '4px',
             display: 'flex',
             alignItems: 'center',
+            boxShadow: 'inset 1px 1px 2px rgba(0,0,0,0.1)'
           }}>
-            <Layout size={18} />
+            <BookOpen size={20} />
           </div>
-          <span>Smart<span style={{ color: 'var(--text-main)' }}>Task</span></span>
+          <span>Grimoire<span style={{ color: 'var(--text-main)' }}>Tasks</span></span>
         </Link>
 
         {/* Right controls */}

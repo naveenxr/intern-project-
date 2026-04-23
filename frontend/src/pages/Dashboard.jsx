@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useTasks } from '../context/TaskContext';
 import { useAuth } from '../context/AuthContext';
 import BoardCard from '../components/BoardCard';
-import { Plus, Layout, CheckCircle, Clock, List, TrendingUp, X } from 'lucide-react';
+import { Plus, BookOpen, CheckCircle, Clock, List, TrendingUp, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 /* ── Small reusable stat card ────────────────────────────── */
@@ -128,24 +128,22 @@ const Dashboard = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 onClick={() => window.location.href = '/profile'}
-                className="glass"
+                className="card"
                 style={{ 
                     padding: '1.25rem 1.5rem', 
-                    borderRadius: 'var(--radius-lg)', 
                     marginBottom: '2.5rem',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '1rem',
-                    background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1))',
-                    border: '1px solid rgba(245, 158, 11, 0.3)',
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--danger)',
                     cursor: 'pointer',
-                    boxShadow: 'var(--shadow-md)'
                 }}
             >
                 <motion.div 
                     animate={{ rotate: [0, -10, 10, -10, 10, 0] }} 
                     transition={{ repeat: Infinity, duration: 2, repeatDelay: 1 }}
-                    style={{ background: 'rgba(239, 68, 68, 0.15)', padding: '0.75rem', borderRadius: '50%', color: 'var(--danger)' }}
+                    style={{ background: 'transparent', padding: '0.75rem', borderRadius: '50%', color: 'var(--danger)', border: '1px solid var(--danger)' }}
                 >
                     <span style={{ fontSize: '1.5rem' }}>🔔</span>
                 </motion.div>
@@ -181,8 +179,8 @@ const Dashboard = () => {
       {/* ── Boards ── */}
       <section>
         <div className="section-title">
-          <Layout size={20} style={{ color: 'var(--primary)' }} />
-          Your Boards <span style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-muted)' }}>({boards.length})</span>
+          <BookOpen size={24} style={{ color: 'var(--primary)' }} />
+          Your Grimoires <span style={{ fontSize: '1rem', fontWeight: 500, color: 'var(--text-muted)' }}>({boards.length})</span>
         </div>
 
         {loading ? (
@@ -202,10 +200,10 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="empty-state">
-            <Layout size={40} style={{ color: 'var(--border)', margin: '0 auto 1rem' }} />
-            <p>No boards yet. Create your first board to start tracking tasks!</p>
+            <BookOpen size={48} style={{ color: 'var(--border)', margin: '0 auto 1rem' }} />
+            <p>No grimoires yet. Create your first book to start tracking tasks!</p>
             <button className="btn-primary" onClick={() => setShowModal(true)}>
-              <Plus size={18} /> Create My First Board
+              <Plus size={18} /> Create My First Grimoire
             </button>
           </div>
         )}

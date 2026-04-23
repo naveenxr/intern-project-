@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, ArrowRight, Trash2, Edit2, MoreVertical } from 'lucide-react';
+import { Book, ArrowRight, Trash2, Edit2, MoreVertical } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const BoardCard = ({ board, onDelete, onEdit }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const colors = [
-    'linear-gradient(135deg,#6366f1,#818cf8)',
-    'linear-gradient(135deg,#10b981,#34d399)',
-    'linear-gradient(135deg,#f59e0b,#fbbf24)',
-    'linear-gradient(135deg,#ef4444,#f87171)',
-    'linear-gradient(135deg,#8b5cf6,#a78bfa)',
-    'linear-gradient(135deg,#0ea5e9,#38bdf8)',
+    '#2e1065', /* Deep Violet */
+    '#1e3a8a', /* Deep Royal Blue */
+    '#312e81', /* Indigo */
+    '#4c1d95', /* Bright Violet */
+    '#172554', /* Midnight Blue */
   ];
   // Pick a consistent colour based on board name length
-  const gradient = colors[(board.name.length) % colors.length];
+  const bgColor = colors[(board.name.length) % colors.length];
 
   return (
     <motion.div
@@ -24,11 +23,11 @@ const BoardCard = ({ board, onDelete, onEdit }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       className="card flex column justify-between"
-      style={{ padding: 0, overflow: 'hidden', position: 'relative' }}
+      style={{ padding: 0, overflow: 'hidden', position: 'relative', borderLeft: `8px solid ${bgColor}` }}
     >
-      {/* Colour header strip */}
-      <div style={{ background: gradient, padding: '1.25rem 1.5rem', position: 'relative' }}>
-        <Layout size={28} color="rgba(255,255,255,0.9)" />
+      {/* Colour header strip - Book Spine Effect */}
+      <div style={{ background: bgColor, padding: '1.25rem 1.5rem', position: 'relative', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+        <Book size={28} color="rgba(255,255,255,0.8)" />
 
         {/* Kebab menu */}
         <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem' }}>
@@ -82,9 +81,9 @@ const BoardCard = ({ board, onDelete, onEdit }) => {
       </div>
 
       {/* Body */}
-      <div style={{ padding: '1.25rem 1.5rem', flex: 1 }}>
-        <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.4rem' }}>{board.name}</h3>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.5 }}>
+      <div style={{ padding: '1.25rem 1.5rem', flex: 1, borderTop: '1px solid var(--border)' }}>
+        <h3 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-heading)', fontWeight: 700, marginBottom: '0.4rem', fontStyle: 'italic' }}>{board.name}</h3>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.5 }}>
           {board.description || 'No description provided.'}
         </p>
       </div>

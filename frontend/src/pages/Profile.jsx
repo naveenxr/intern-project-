@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
-import { BellRing, Camera, Upload, User, Layout, ArrowLeft } from 'lucide-react';
+import { BellRing, Camera, Upload, User, BookOpen, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -75,22 +75,21 @@ const Profile = () => {
                     <motion.div 
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="glass"
+                        className="card"
                         style={{ 
                             padding: '1.25rem 1.5rem', 
-                            borderRadius: 'var(--radius-lg)', 
                             marginBottom: '2rem',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '1rem',
-                            background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1))',
-                            border: '1px solid rgba(245, 158, 11, 0.3)',
+                            background: 'var(--bg-card)',
+                            border: '1px solid var(--danger)',
                         }}
                     >
                         <motion.div 
                             animate={{ rotate: [0, -10, 10, -10, 10, 0] }} 
                             transition={{ repeat: Infinity, duration: 2, repeatDelay: 1 }}
-                            style={{ background: 'rgba(239, 68, 68, 0.15)', padding: '0.75rem', borderRadius: '50%', color: 'var(--danger)' }}
+                            style={{ background: 'transparent', padding: '0.75rem', borderRadius: '50%', color: 'var(--danger)', border: '1px solid var(--danger)' }}
                         >
                             <BellRing size={24} />
                         </motion.div>
@@ -110,7 +109,7 @@ const Profile = () => {
                     <div style={{ position: 'relative', marginBottom: '2rem' }}>
                         <div style={{ 
                             width: '140px', height: '140px', borderRadius: '50%', background: 'var(--bg-main)',
-                            border: '4px solid var(--card-bg)', boxShadow: 'var(--shadow-md)', overflow: 'hidden',
+                            border: '4px solid var(--bg-card)', boxShadow: 'var(--shadow-md)', overflow: 'hidden',
                             display: 'flex', alignItems: 'center', justifyContent: 'center'
                         }}>
                             {previewUrl ? (
@@ -158,8 +157,8 @@ const Profile = () => {
 
                 {/* Details Card */}
                 <div className="card" style={{ flex: '2 1 400px', padding: '2.5rem' }}>
-                    <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <Layout size={20} style={{ color: 'var(--primary)' }}/> Account Details
+                    <h3 style={{ fontSize: '1.2rem', fontFamily: 'var(--font-heading)', fontWeight: 700, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontStyle: 'italic' }}>
+                        <BookOpen size={20} style={{ color: 'var(--primary)' }}/> Account Details
                     </h3>
                     
                     <div className="flex column gap-3">
